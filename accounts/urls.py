@@ -30,5 +30,7 @@ urlpatterns = [
          name='password_reset_complete'),
     path('home/', account_views.home_view, name='home' ),
     path('about/', account_views.about_view, name='about' ),
+    path('files/', account_views.files_view, name='files' ),
+    
 ]
 

@@ -44,7 +44,14 @@ def profile(request):
 
 
 def home_view(request):
-    return render(request, 'home/home.html', {"title" : "Home"})
+    content = {"title" : "Home"}
+    return render(request, 'home/home.html', content)
+
+@login_required
+def files_view(request):
+    content = {"title" : "Home"}
+    content["files"] = list(request.user.files_set.all())
+    return render(request, 'home/files.html', content)
 
 
 def about_view(request):

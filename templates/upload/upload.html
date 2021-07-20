@@ -1,0 +1,56 @@
+<style>
+  .container {
+    display: flex;
+}
+
+.container__half {
+    flex: 1;
+}
+</style>
+
+{% extends 'home/base.html' %}
+
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+ 
+  <div class="container">
+    <div class="container__half">
+      <input type="hidden" name="csrfmiddlewaretoken" value="1LIlgG6ogZTAFE5EoJod73yEgD4r8bTZTHE0yBvpvuWe2xZfWROYpJiso5ZDJTyF">
+    <p><label for="id_filename">Filename:</label> </p> 
+    <input type="text" name="filename" maxlength="255"
+        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        required id="id_filename">
+    <p><label for="id_description">Description:</label> </p> 
+    <textarea name="description" cols="40" rows="10"
+        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        id="id_description">
+  </textarea>
+    </div>
+
+    <!-- Right content -->
+    <div class="container__half">
+      
+        <p><label for="id_File">File:</label> </p> 
+        <input type="file" name="File" onchange="document.getElementsByName('filename')[0].value = document.getElementById('id_File').value.replace(/^.*[\\\/]/, '');"
+        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        required id="id_File">
+
+
+
+    </div>
+</div>
+
+  <button type="submit">Upload</button>
+</form>
+
+
+<p><a href="{% url 'home' %}">Home</a></p>
+{% endblock %}
+
+<script>
+  // const changeFileName = () => {
+    
+  // }
+</script>

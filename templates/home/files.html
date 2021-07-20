@@ -1,0 +1,15 @@
+
+{% extends "home/base.html" %}
+{% block content %}
+<h1>File Page</h1>
+
+{% if user.is_authenticated %}
+      
+{% for file in files %}
+    <li><a href="{{file.File.url}}"> {{file.filename}} </a></li>
+{% endfor %}
+
+{% endif %}
+ 
+
+{% endblock content %}
