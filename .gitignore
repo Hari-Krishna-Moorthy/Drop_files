@@ -1,5 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+*/__pycache__/*
 *.py[cod]
 *.pyc
 *$py.class
@@ -63,6 +64,7 @@ db.sqlite3
 db.sqlite3-journal
 media/*
 static/*
+staticfiles/*
 */migrations/*.py
 
 # Flask stuff:

@@ -1,0 +1,54 @@
+# before hosting
+
+1) add STATIC_ROOT in settings.py
+
+2) pip freeze > requirement.txt
+    - add gunicorn, django-heroku in the file
+
+3) Create file Procfile
+    - put 'web: gunicorn {add name}.wsgi in the file 
+
+4) Add your domain to ALLOWED_HOSTS
+
+5) [NOT NECESSARY] Open the terminal and 
+        - import secrets
+        - secrets.token_hex(24)
+
+6) Set heroku environments
+        - heroku config:set VAR="VALUE"
+        [email, password, secrets, passwords....]
+
+
+# Push to heroku host
+
+    1) disable the collectstatic during a deploy
+
+    heroku config:set DISABLE_COLLECTSTATIC=1
+
+    2) deploy
+
+    git push heroku master
+
+    3) run migrations (django 1.10 added at least one)
+        - heroku run python manage.py makemigrations
+        - heroku run python manage.py migrate
+
+    4) run collectstatic using bower
+
+    heroku run 'bower install --config.interactive=false;grunt prep;python manage.py collectstatic --noinput'
+
+    5) enable collecstatic for future deploys
+
+    heroku config:unset DISABLE_COLLECTSTATIC
+
+    6) try it on your own (optional)
+
+    heroku run python manage.py collectstatic
+
+# Detabase 
+
+    1) heroku addons:create heroku-postgresql:hobby-dev
+    2) heroku pg
+
+    3) import 
+     
